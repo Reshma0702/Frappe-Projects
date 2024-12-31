@@ -1,0 +1,173 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Workflow",
+  "document_type": "Leave Application",
+  "is_active": 1,
+  "modified": "2024-12-26 00:54:34.524451",
+  "name": "Leave Approval",
+  "override_status": 0,
+  "send_email_alert": 1,
+  "states": [
+   {
+    "allow_edit": "Employee",
+    "doc_status": "0",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Leave Approval",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "Open",
+    "update_field": null,
+    "update_value": null
+   },
+   {
+    "allow_edit": "Projects Manager",
+    "doc_status": "0",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Leave Approval",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "Approval pending by Manager",
+    "update_field": null,
+    "update_value": null
+   },
+   {
+    "allow_edit": "HR Manager",
+    "doc_status": "0",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Leave Approval",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "Approval pending by HR",
+    "update_field": null,
+    "update_value": null
+   },
+   {
+    "allow_edit": "Administrator",
+    "doc_status": "0",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Leave Approval",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "Approval pending by Admin",
+    "update_field": null,
+    "update_value": null
+   },
+   {
+    "allow_edit": "Employee",
+    "doc_status": "0",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Leave Approval",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "Rejected",
+    "update_field": null,
+    "update_value": null
+   },
+   {
+    "allow_edit": "Administrator",
+    "doc_status": "0",
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "parent": "Leave Approval",
+    "parentfield": "states",
+    "parenttype": "Workflow",
+    "state": "Approved",
+    "update_field": null,
+    "update_value": null
+   }
+  ],
+  "transitions": [
+   {
+    "action": "Submit",
+    "allow_self_approval": 1,
+    "allowed": "Employee",
+    "condition": null,
+    "next_state": "Approval pending by Manager",
+    "parent": "Leave Approval",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Open"
+   },
+   {
+    "action": "Approve",
+    "allow_self_approval": 1,
+    "allowed": "Projects Manager",
+    "condition": null,
+    "next_state": "Approval pending by HR",
+    "parent": "Leave Approval",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Approval pending by Manager"
+   },
+   {
+    "action": "Reject",
+    "allow_self_approval": 1,
+    "allowed": "Projects Manager",
+    "condition": null,
+    "next_state": "Rejected",
+    "parent": "Leave Approval",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Approval pending by Manager"
+   },
+   {
+    "action": "Approve",
+    "allow_self_approval": 1,
+    "allowed": "HR Manager",
+    "condition": null,
+    "next_state": "Approval pending by Admin",
+    "parent": "Leave Approval",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Approval pending by HR"
+   },
+   {
+    "action": "Reject",
+    "allow_self_approval": 1,
+    "allowed": "HR Manager",
+    "condition": null,
+    "next_state": "Rejected",
+    "parent": "Leave Approval",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Approval pending by HR"
+   },
+   {
+    "action": "Approve",
+    "allow_self_approval": 1,
+    "allowed": "Administrator",
+    "condition": null,
+    "next_state": "Approved",
+    "parent": "Leave Approval",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Approval pending by Admin"
+   },
+   {
+    "action": "Reject",
+    "allow_self_approval": 1,
+    "allowed": "Administrator",
+    "condition": null,
+    "next_state": "Rejected",
+    "parent": "Leave Approval",
+    "parentfield": "transitions",
+    "parenttype": "Workflow",
+    "state": "Approval pending by Admin"
+   }
+  ],
+  "workflow_name": "Leave Approval",
+  "workflow_state_field": "workflow_state"
+ }
+]
